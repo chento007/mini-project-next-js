@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
   return {
     title: product.title,
     description: product.description,
-    metadataBase: new URL("https://istad.co"),
+    metadataBase: new URL("https://louk-louk.vercel.app"),
     ISO: 200,
     Keywords: "Clothes,Shop,online Shop,discount,",
     alternates: {

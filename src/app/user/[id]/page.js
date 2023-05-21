@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
         description: "this page show about view user detail " + user.role,
         ISO: 200,
         Keywords: `${user.role},${user.name}`,
-        metadataBase: new URL("https://istad.co"),
+        metadataBase: new URL("https://louk-louk.vercel.app"),
         alternates: {
             canonical: "/",
             languages: {

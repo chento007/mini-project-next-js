@@ -6,21 +6,18 @@ export default function AvatarComponents({ id, image, title }) {
     return (
         <Link
             href={`/category/${id}`}
-            className='flex flex-col text-center justify-center items-start pb-10 w-40'>
+            className='w flex flex-col text-center justify-start items-center  pb-6  '>
             <Image
                 src={image}
-                width={500}
-                height={500}
-                style={{
-                    width: "60%",
-                    height: "95px",
-                    borderRadius: "50%"
-                }}
+                width={0}
+                height={0}
                 alt="Picture of the author"
+                className='h-20 w-20 md:h-28 md:w-28 '
+                style={{ objectFit: "contain", aspectRatio: "3/4", maxBlockSize: "colorBurn", borderRadius: "50%", border: "1px solid black" }}
             />
-            <p className='block mt-1 w-24  text-gray-900 dark:text-white line-clamp-1text-1xl text-center py-2 pl-3 pr-4 rounded '>
+            <h1 className='block mt-1 w-24 truncate  text-gray-900 dark:text-white line-clamp-1 text-1xl text-center rounded '>
                 {title}
-            </p>
+            </h1>
         </Link>
     )
 }

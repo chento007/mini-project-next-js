@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
     return {
         title: categories.name,
         description: "There are product that in category " + categories.name,
-        metadataBase: new URL("https://istad.co"),
+        metadataBase: new URL("https://louk-louk.vercel.app"),
         ISO: 200,
         Keywords: "Clothes,Shop,online Shop,discount,",
         alternates: {
@@ -43,7 +43,7 @@ export default async function page({ params }) {
     return (
         <section>
             {(productsCategory.length != 0) ? (
-                <div className='p-2 sm:pl-44 sm:pr-44 sm:pt-10z'>
+                <div className='p-2 lg:pl-16 lg:pr-16 lg:pt-10 md:pr-16 md:pt-10 md:pl-16 sm:pl-32 sm:pr-16 sm:pt-10'>
 
                     <h3 className="text-2xl mb-3 font-semibold line-clamp-1 tracking-tight text-gray-900 dark:text-white">
                         {(productsCategory.length != 0) ? productsCategory[0].category["name"] : "No Record"}

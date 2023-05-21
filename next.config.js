@@ -55,6 +55,9 @@ const nextConfig = {
             },{
                 protocol: 'https',
                 hostname:"api.lorem.space"
+            },{
+                protocol: 'https',
+                hostname:"encrypted-tbn0.gstatic.com"
             }
         ],
     }

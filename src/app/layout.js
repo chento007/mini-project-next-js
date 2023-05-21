@@ -10,7 +10,7 @@ export const metadata = {
   title: {
     template: '%s | ISTAD',
   },
-  metadataBase: new URL("https://istad.co"),
+  metadataBase: new URL("https://louk-louk.vercel.app"),
   ISO: 200,
   Keywords: "Clothes,Shop,online Shop,discount,",
   alternates: {

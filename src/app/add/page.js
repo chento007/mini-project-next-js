@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { API_POST_PRODUCT, API_CATEGORY } from '@/lib/api';
 import * as Yup from 'yup';
 import axios from 'axios';
+import Image from 'next/image';
 import LoadingComponents from '@/components/Loading';
 const FILE_SIZE = 1024 * 1024 * 2; // 2MB
 const SUPPORTED_FORMATS = [
@@ -69,130 +70,132 @@ export default async function Login() {
     }
     return (
         <>
-            {isLoading ? <LoadingComponents /> : <Formik
-                initialValues={{
-                    title: '',
-                    price: '',
-                    description: '',
-                    categoryId: '',
-                    file: undefined
-                }}
-                validationSchema={validationChema}
-                onSubmit={async (value, { setSubmitting, resetForm }) => {
-                    setIsLoading(true);
-                    const formData = new FormData();
-                    formData.append("file", value.file);
-                    const images = await uploadImage({ file: formData });
-                    value.images = [images];
-                    createProduct(value);
-                    setIsLoading(false);
-                    setSubmitting(false);
-                    resetForm();
-                }}
+            <main>
+                {isLoading ? <LoadingComponents /> : <Formik
+                    initialValues={{
+                        title: '',
+                        price: '',
+                        description: '',
+                        categoryId: '',
+                        file: undefined
+                    }}
+                    validationSchema={validationChema}
+                    onSubmit={async (value, { setSubmitting, resetForm }) => {
+                        setIsLoading(true);
+                        const formData = new FormData();
+                        formData.append("file", value.file);
+                        const images = await uploadImage({ file: formData });
+                        value.images = [images];
+                        createProduct(value);
+                        setIsLoading(false);
+                        setSubmitting(false);
+                        resetForm();
+                    }}
 
-            >
-                {({ isSubmitting, setFieldValue }) => (
-                    <div className='m-auto'>
-                        <Form className='flex-col justify-center items-center w-2/6 m-auto'>
-                            <div>
-                                <label htmlFor='title' className='block mb-2 mt-3  text-sm font-medium text-gray-900 dark:text-white'>Name : </label>
-                                <Field
-                                    type="text"
-                                    name="title"
-                                    className="mb-2 g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                />
-                                <ErrorMessage
-                                    name="title"
-                                    className='text-red-500'
-                                    component="div"
-                                />
-                            </div>
+                >
+                    {({ isSubmitting, setFieldValue }) => (
+                        <div className='m-auto'>
+                            <Form className='flex-col justify-center items-center w-2/6 m-auto'>
+                                <div>
+                                    <label htmlFor='title' className='block mb-2 mt-3  text-sm font-medium text-gray-900 dark:text-white'>Name : </label>
+                                    <Field
+                                        type="text"
+                                        name="title"
+                                        className="mb-2 g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    />
+                                    <ErrorMessage
+                                        name="title"
+                                        className='text-red-500'
+                                        component="div"
+                                    />
+                                </div>
 
-                            <div>
-                                <label
-                                    htmlFor='price'
-                                    className='block mb-2 mt-3  text-sm font-medium text-gray-900 dark:text-white'>
-                                    price :
-                                </label>
-                                <Field
-                                    type="text"
-                                    name="price"
-                                    className="mb-2 g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                />
-                                <ErrorMessage
-                                    name="price"
-                                    className='text-red-500'
-                                    component="div"
-                                />
-                            </div>
+                                <div>
+                                    <label
+                                        htmlFor='price'
+                                        className='block mb-2 mt-3  text-sm font-medium text-gray-900 dark:text-white'>
+                                        price :
+                                    </label>
+                                    <Field
+                                        type="text"
+                                        name="price"
+                                        className="mb-2 g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    />
+                                    <ErrorMessage
+                                        name="price"
+                                        className='text-red-500'
+                                        component="div"
+                                    />
+                                </div>
 
-                            <div>
-                                <label
-                                    htmlFor='description'
-                                    className='block mb-2 mt-3  text-sm font-medium text-gray-900 dark:text-white'>
-                                    Desciption :
-                                </label>
-                                <Field
-                                    as="textarea"
-                                    name="description"
-                                    className="mb-2 g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                />
-                                <ErrorMessage
-                                    name="description"
-                                    className='text-red-500'
-                                    component="div"
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor='categoryId'
-                                    className='block mb-2 mt-3 text-sm font-medium text-gray-900 dark:text-white'>
-                                    Category
-                                </label>
-                                <Field name="categoryId" as="select" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option value="0">Select Category : </option>
-                                    {
-                                        categories.map((item, index) => (
-                                            <option key={index} value={item.id}>{item.name}</option>
-                                        ))
-                                    }
-                                </Field>
-                                <ErrorMessage
-                                    name="categoryId"
-                                    className='text-red-500'
-                                    component="div"
-                                />
-                            </div>
-                            <div>
-                                <label
-                                    htmlFor='file'
-                                    className='block mb-2 mt-3 text-sm font-medium text-gray-900 dark:text-white'>
-                                    Select File :
-                                </label>
-                                <Field
-                                    className="mb-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                    name="file"
-                                    type="file"
-                                    title="Select a file"
-                                    setFieldValue={setFieldValue}
-                                    isSubmitting={isSubmitting}
-                                    component={CustomInput} // component prop used to render the custom input          
-                                />
-                                <ErrorMessage name="file">
-                                    {(msg) => <div className="text-red-600">{msg}</div>}
-                                </ErrorMessage>
-                            </div>
+                                <div>
+                                    <label
+                                        htmlFor='description'
+                                        className='block mb-2 mt-3  text-sm font-medium text-gray-900 dark:text-white'>
+                                        Desciption :
+                                    </label>
+                                    <Field
+                                        as="textarea"
+                                        name="description"
+                                        className="mb-2 g-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    />
+                                    <ErrorMessage
+                                        name="description"
+                                        className='text-red-500'
+                                        component="div"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor='categoryId'
+                                        className='block mb-2 mt-3 text-sm font-medium text-gray-900 dark:text-white'>
+                                        Category
+                                    </label>
+                                    <Field name="categoryId" as="select" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option value="0">Select Category : </option>
+                                        {
+                                            categories.map((item, index) => (
+                                                <option key={index} value={item.id}>{item.name}</option>
+                                            ))
+                                        }
+                                    </Field>
+                                    <ErrorMessage
+                                        name="categoryId"
+                                        className='text-red-500'
+                                        component="div"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        htmlFor='file'
+                                        className='block mb-2 mt-3 text-sm font-medium text-gray-900 dark:text-white'>
+                                        Select File :
+                                    </label>
+                                    <Field
+                                        className="mb-2 block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                                        name="file"
+                                        type="file"
+                                        title="Select a file"
+                                        setFieldValue={setFieldValue}
+                                        isSubmitting={isSubmitting}
+                                        component={CustomInput} // component prop used to render the custom input          
+                                    />
+                                    <ErrorMessage name="file">
+                                        {(msg) => <div className="text-red-600">{msg}</div>}
+                                    </ErrorMessage>
+                                </div>
 
-                            <button
-                                type="submit"
-                                disabled={isSubmitting}
-                                className="mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                Submit
-                            </button>
-                        </Form>
-                    </div>
-                )}
-            </Formik>}
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="mt-2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                                    Submit
+                                </button>
+                            </Form>
+                        </div>
+                    )}
+                </Formik>}
+            </main>
         </ >
     )
 }
@@ -202,7 +205,7 @@ function CustomInput({ field, form, isSubmitting, ...props }) {
         if (isSubmitting) {
             setPreview(null)
         }
-    }, [])
+    }, [isSubmitting])
     return (
         <div>
             <input
@@ -214,8 +217,11 @@ function CustomInput({ field, form, isSubmitting, ...props }) {
                 {...props}
             />
             {
-                preview && <img
+                preview && <Image
                     src={preview}
+                    alt='upload image'
+                    width={200}
+                    height={200}
                     className='w-20 h-20 rounded-full object-cover'
                 />
             }
