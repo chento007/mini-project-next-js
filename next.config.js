@@ -46,18 +46,30 @@ const nextConfig = {
             , {
                 protocol: 'https',
                 hostname: "cdn-icons-png.flaticon.com"
-            },{
+            }, {
                 protocol: 'https',
-                hostname:"pushinka.top"
-            },{
+                hostname: "pushinka.top"
+            }, {
                 protocol: 'https',
-                hostname:"robohash.org"
-            },{
+                hostname: "robohash.org"
+            }, {
                 protocol: 'https',
-                hostname:"api.lorem.space"
-            },{
+                hostname: "api.lorem.space"
+            }, {
                 protocol: 'https',
-                hostname:"encrypted-tbn0.gstatic.com"
+                hostname: "encrypted-tbn0.gstatic.com"
+            }, {
+                protocol: 'https',
+                hostname: "th.bing.com"
+            }, {
+                protocol: 'https',
+                hostname: "us-tuna-sounds-images.voicemod.net"
+            }, {
+                protocol: 'https',
+                hostname: "edit.com"
+            }, {
+                protocol: 'https',
+                hostname: "images.unsplash.com"
             }
         ],
     }

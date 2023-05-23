@@ -9,26 +9,31 @@ export async function getUsers() {
 
 export async function generateMetadata() {
     return {
-      title: "User Page",
-      description: "This page show all user that has been post",
+        title: "User Page",
+        description: "This page show all user that has been post",
     }
-  }
+}
 export default async function page() {
     const users = await getUsers();
     return (
-        <section className='grid grid-cols-2 sm:grid-cols-4 p-2  lg:pl-16 lg:pr-16 lg:pt-10 md:pr-16 md:pt-10 md:pl-16 sm:pl-32 sm:pr-16 sm:pt-10'>
-            {
-                users.map((item, index) => (
-                    <CardUser
-                        id={item.id}
-                        name={item.name}
-                        image={item.avatar}
-                        email={item.email}
-                        role={item.role}
-                        key={index}
-                    />
-                ))
-            }
-        </section>
+        <div className='p-2 lg:pl-16 lg:pr-16 lg:pt-10 md:pr-16 md:pt-10 md:pl-16 sm:pl-32 sm:pr-16 sm:pt-10'>
+            <h3 className="text-2xl ml-24 mb-3 font-semibold line-clamp-1 tracking-tight text-gray-900 dark:text-white">
+                Category
+            </h3>
+            <section className='grid grid-cols-2 sm:grid-cols-4 p-2  lg:pl-16 lg:pr-16 lg:pt-10 md:pr-16 md:pt-10 md:pl-16 sm:pl-32 sm:pr-16 sm:pt-10'>
+                {
+                    users.map((item, index) => (
+                        <CardUser
+                            id={item.id}
+                            name={item.name}
+                            image={item.avatar}
+                            email={item.email}
+                            role={item.role}
+                            key={index}
+                        />
+                    ))
+                }
+            </section>
+        </div>
     )
 }

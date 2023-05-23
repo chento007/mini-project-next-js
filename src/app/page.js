@@ -1,3 +1,4 @@
+"use-client"
 import AvatarComponents from '@/components/Avatar';
 import CardProduct from '@/components/CardProduct'
 import { API_PRODUCT, API_CATEGORY } from '@/lib/api';
@@ -11,7 +12,7 @@ export const metadata = {
   description: 'Alibaba Group Holding Limited, or Alibaba (Chinese: 阿里巴巴), is a Chinese multinational technology company specializing in e-commerce, retail, Internet, and technology. Founded on 28 June 1999 in Hangzhou, Zhejiang, the company provides consumer-to-consumer (C2C), business-to-consumer',
 };
 export async function getCategory() {
-  const res = await fetch(API_CATEGORY(8));
+  const res = await fetch(API_CATEGORY(8),{ cache: "no-store" });
   const respone = await res.json();
   return respone;
 }

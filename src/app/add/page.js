@@ -33,7 +33,7 @@ export async function getCategory() {
     const data = await res.json();
     return data;
 }
-export default async function Login() {
+export default async function AddProd() {
     const [isLoading, setIsLoading] = useState(false);
     const categories = await getCategory();
     const createProduct = async (user) => {
@@ -53,6 +53,7 @@ export default async function Login() {
         if (data.error) {
             alert(data.message)
         } else {
+            console.log(data);
             alert("user created sucessfully")
             return data;
         }
@@ -176,7 +177,7 @@ export default async function Login() {
                                         name="file"
                                         type="file"
                                         title="Select a file"
-                                        setFieldValue={setFieldValue}
+                                        // setFieldValue={setFieldValue}
                                         isSubmitting={isSubmitting}
                                         component={CustomInput} // component prop used to render the custom input          
                                     />
