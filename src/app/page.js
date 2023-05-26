@@ -10,9 +10,22 @@ export async function getProduct() {
 export const metadata = {
   title: 'Home',
   description: 'Alibaba Group Holding Limited, or Alibaba (Chinese: 阿里巴巴), is a Chinese multinational technology company specializing in e-commerce, retail, Internet, and technology. Founded on 28 June 1999 in Hangzhou, Zhejiang, the company provides consumer-to-consumer (C2C), business-to-consumer',
+  Keywords: 'online shop',
+  metadataBase: new URL("https://louk-louk.vercel.app"),
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en-US": "/en-US",
+      "de-DE": "/de-DE",
+    },
+  },
+  openGraph: {
+    title:"Home",
+    images: "https://t4.ftcdn.net/jpg/03/06/69/49/360_F_306694930_S3Z8H9Qk1MN79ZUe7bEWqTFuonRZdemw.jpg",
+  }
 };
 export async function getCategory() {
-  const res = await fetch(API_CATEGORY(8),{ cache: "no-store" });
+  const res = await fetch(API_CATEGORY(8), { cache: "no-store" });
   const respone = await res.json();
   return respone;
 }
@@ -25,7 +38,7 @@ export default async function Home() {
         <h1 className="text-2xl  mb-2 font-semibold line-clamp-1 tracking-tight text-gray-900 dark:text-white">
           Categories
         </h1>
-        <section className='grid grid-cols-2 md:grid-cols-5  sm:grid-cols-3 gap-3'>
+        <section className='grid grid-cols-2 md:grid-col-7 sm:grid-cols-7 gap-3'>
           {
             categories.map((category, index) => (
               <AvatarComponents

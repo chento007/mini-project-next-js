@@ -33,6 +33,8 @@ export async function generateMetadata({ params }) {
 
         },
         openGraph: {
+            title: categories.name,
+            description: "There are product that in category " + categories.name,
             images: categories.image,
         }
     }

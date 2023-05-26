@@ -11,6 +11,18 @@ export async function generateMetadata() {
     return {
         title: "User Page",
         description: "This page show all user that has been post",
+        metadataBase: new URL("https://louk-louk.vercel.app"),
+        alternates: {
+            canonical: "/",
+            languages: {
+                "en-US": "/en-US",
+                "de-DE": "/de-DE",
+            },
+        },
+        openGraph: {
+            title: "Home",
+            images: "https://t4.ftcdn.net/jpg/03/06/69/49/360_F_306694930_S3Z8H9Qk1MN79ZUe7bEWqTFuonRZdemw.jpg",
+        }
     }
 }
 export default async function page() {

@@ -23,6 +23,8 @@ export async function generateMetadata({ params }) {
             },
         },
         openGraph: {
+            title:user.name,
+            description: "this page show about view user detail " + user.role,
             images: user.avatar,
         }
     }

@@ -70,6 +70,21 @@ const nextConfig = {
             }, {
                 protocol: 'https',
                 hostname: "images.unsplash.com"
+            }, {
+                protocol: 'https',
+                hostname: "cloudfront-us-east-1.images.arcpublishing.com"
+            }, {
+                protocol: 'https',
+                hostname: "static.fundacion-affinity.org"
+            }, {
+                protocol: 'https',
+                hostname: "cloudfront-us-east-1.images.arcpublishing.com"
+            },{
+                protocol: 'https',
+                hostname:"static.vecteezy.com"
+            },{
+                protocol: 'https',
+                hostname:"img.freepik.com"
             }
         ],
     }
