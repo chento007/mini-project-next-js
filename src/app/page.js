@@ -5,11 +5,11 @@ import { API_PRODUCT, API_CATEGORY } from '@/lib/api';
 export async function getProduct() {
   const res = await fetch(API_PRODUCT(20, 0), { cache: "no-store" });
   const respone = await res.json();
-  return respone;
+  return respone; 
 }
 export const metadata = {
   title: 'Home',
-  description: 'Alibaba Group Holding Limited, or Alibaba (Chinese: 阿里巴巴), is a Chinese multinational technology company specializing in e-commerce, retail, Internet, and technology. Founded on 28 June 1999 in Hangzhou, Zhejiang, the company provides consumer-to-consumer (C2C), business-to-consumer',
+  description: 'Alibaba Group  Holding Limited, or Alibaba (Chinese: 阿里巴巴), is a Chinese multinational technology company specializing in e-commerce, retail, Internet, and technology. Founded on 28 June 1999 in Hangzhou, Zhejiang, the company provides consumer-to-consumer (C2C), business-to-consumer',
   Keywords: 'online shop',
   metadataBase: new URL("https://louk-louk.vercel.app"),
   alternates: {
