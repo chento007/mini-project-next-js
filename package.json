@@ -13,6 +13,7 @@
     "axios": "^1.4.0",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
+    "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.4",
     "formik": "^2.2.9",
     "next": "^13.4.3-canary.3",

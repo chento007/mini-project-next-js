@@ -1307,7 +1307,7 @@ flowbite-react@^0.4.4:
     react-icons "^4.7.1"
     react-indiana-drag-scroll "^2.2.0"
 
-flowbite@^1:
+flowbite@^1, flowbite@^1.6.5:
   version "1.6.5"
   resolved "https://registry.npmjs.org/flowbite/-/flowbite-1.6.5.tgz"
   integrity sha512-eI4h3pIRI9d7grlYq14r0A01KUtw7189sPLLx/O2i7JyPEWpbleScfYuEc48XTeNjk1xxm/JHgZkD9kjyOWAlA==

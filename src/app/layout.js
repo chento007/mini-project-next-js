@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import NavBarComponents from '@/components/NavBar'
 import FooterComponents from '@/components/Footer'
 import LoadingComponents from '@/components/Loading'
+import Script from "next/script";
 import { Suspense } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
           </main>
         </Suspense>
         <FooterComponents />
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></Script>
       </body>
     </html>
   )

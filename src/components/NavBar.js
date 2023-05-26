@@ -32,7 +32,7 @@ export default async function NavBarComponents() {
                                     Home
                                 </Link>
                             </li>
-                            <li className='hidden sm:block'>
+                            <li >
                                 <Link href="/user"
                                     className={
                                         pathname === "/user"
@@ -43,7 +43,7 @@ export default async function NavBarComponents() {
                                     Profile
                                 </Link>
                             </li>
-                            <li className='hidden sm:block'>
+                            <li >
                                 <Link href="/category"
                                     className={
                                         pathname === "/category"
@@ -54,7 +54,7 @@ export default async function NavBarComponents() {
                                     Category
                                 </Link>
                             </li>
-                            <li className='hidden sm:block'>
+                            <li >
                                 <Link href="/add"
                                     className={
                                         pathname === "/add"
