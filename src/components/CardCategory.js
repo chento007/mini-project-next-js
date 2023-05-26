@@ -3,10 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image';
 export default function CardCategory({ id, title, image }) {
     return (
-        <div>
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <>
+            <div class="max-w-sm bg-white border mt-6s  border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <Image
-                    className="p-8 rounded-t-lg h-auto max-w-full"
+                    className="p-8 rounded-t-lg h-auto"
                     width={500}
                     height={200}
                     src={image}
@@ -22,6 +22,6 @@ export default function CardCategory({ id, title, image }) {
                     </Link>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

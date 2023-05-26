@@ -27,7 +27,7 @@ export default async function page() {
       <h3 className="text-2xl ml-16 mb-3 font-semibold line-clamp-1 tracking-tight text-gray-900 dark:text-white">
         Category
       </h3>
-      <div className='grid grid-cols-5 p-2 gap-3  lg:pl-16 lg:pr-16 lg:pt-10 md:pr-16 md:pt-10 md:pl-16 sm:pl-32 sm:pr-16 sm:pt-10'>
+      <div className='grid grid-cols-2 sm:grid-cols-4 p-1  gap-2 lg:pl-16 lg:pr-16 lg:pt-10 md:pr-16 md:pt-10 md:pl-16 sm:pl-32 sm:pr-16 sm:pt-10'>
         {
           categories.map((item, index) => (
             <CardCategory
